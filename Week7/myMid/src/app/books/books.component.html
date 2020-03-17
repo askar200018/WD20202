@@ -1,0 +1,22 @@
+<h1></h1>
+<h2 class="title">Books List</h2>
+<ul class="books">
+    <li *ngFor="let book of books">
+        <a routerLink="/books/{{book.id}}">
+            <span class="badge">{{book.id}}</span> {{book.title}}
+        </a>
+        <span class="fav" *ngIf="book.is_favourite">Favourite Book</span>
+    </li>
+</ul>
+
+<!-- 
+    <h2>My Heroes</h2>
+<ul class="heroes">
+    <li *ngFor="let hero of heroes">
+      <a routerLink="/detail/{{hero.id}}">
+        <span class="badge">{{hero.id}}</span> {{hero.name}}
+      </a>
+    </li>
+</ul>
+
+ -->

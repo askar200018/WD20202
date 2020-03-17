@@ -1,0 +1,25 @@
+<h3>Book Detail</h3>
+<div class="book" *ngIf="book">
+    <h2 class="book__title">{{book.title | uppercase}}</h2>
+    <p class="book__description">{{ book.description }}</p>
+    <p class="book__description" *ngIf="book.is_favourite">Favourite Book</p>
+    <div class="book__id"><span>Id: </span>{{book.id}}</div>
+    <div>
+      <div class="input-box">
+        <label>Title:
+          <input [(ngModel)]="book.title" placeholder="title"/>
+        </label>
+      </div>
+      <div class="input-box">
+        <label>Description:
+          <input [(ngModel)]="book.description" placeholder="description"/>
+        </label>
+      </div>
+      <div class="input-box">
+        <label>Favourite:
+          <input type="checkbox" [(ngModel)]="book.is_favourite" checked="is_favourite">
+        </label>
+      </div>
+    </div>
+    <button class="btn" (click)="goBack()">go back</button>
+</div>

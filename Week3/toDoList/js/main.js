@@ -51,7 +51,7 @@ list.addEventListener('click', function(event){
 });
 
 
-input.addEventListener('keyup', function(event){
+input.addEventListener('keyup', (event) => {
     if(event.keyCode === 13)
         pressBtn();
 });
