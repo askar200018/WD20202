@@ -1,5 +1,4 @@
 import { Category } from "./category";
-import { Product } from "./product";
 import { computerProducts } from "./computer-products";
 import { homeProducts } from "./home-produts";
 import { phoneProducts } from "./phone-products";
