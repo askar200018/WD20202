@@ -7,10 +7,10 @@
                         <img [src]="product.imgUrl" alt="Product Image" class="image">
                     </a>
                     <h3 class="product-title">
-                        <a href="#">{{product.name}}</a>
+                        <a [routerLink]="['/products', product.id]" routerLinkActive="router-link-active" >{{product.name}}</a>
                     </h3>
                     <p class="product-category">{{product.category}}</p>
-                    <p class="product-price">£{{product.price}}</p>
+                    <p class="product-price">KZT {{product.price}}</p>
                 </div>
             </div>
         </div>

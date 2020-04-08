@@ -5,9 +5,10 @@
                 <div class="inner">
                     <div class="image" [ngStyle]="{backgroundImage: category.imgUrl}">
                     </div>
-                    <a href="#" class="image__link">{{ category.name }}</a>
+                    <a [routerLink]="['/categories', category.id]"  class="image__link">{{ category.name }}</a>
                 </div>
             </div>
         </div>
     </div>
 </div>
+

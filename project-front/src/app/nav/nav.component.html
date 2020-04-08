@@ -1,21 +1,16 @@
 <div class="app-nav">
-  <div class="container">
+  <div class="container-fluid">
     <div class="logo-container">
       <a href="#">
-        <h2 class="logo__title">Shop Store</h2>
+        <h2 class="logo__title">Shmot.kz</h2>
       </a>
     </div>
     <div class="navigation-container">
       <nav class="nav">
         <ul>
-          <li class="nav__item">
-            <a [routerLink]="['/categories']" routerLinkActive="router-link-active"  class="nav__link">Categories</a>
-          </li>
-          <li class="nav__item">
-            <a [routerLink]="['/products']" routerLinkActive="router-link-active"  class="nav__link">Products</a>
-          </li>
-          <li class="nav__item">
-            <a href="#" class="nav__link">My products</a>
+          <li class="nav__item" *ngFor="let category of categories">
+            <a [routerLink]="['/categories', category.id]"
+            routerLinkActive="active" class="nav__link">{{category.name}}</a>
           </li>
         </ul>
       </nav>

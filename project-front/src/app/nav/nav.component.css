@@ -1,3 +1,6 @@
+h2 {
+    text-transform: uppercase;
+}
 a {
     text-decoration: none;
 }
@@ -14,7 +17,7 @@ a {
     align-items: center;
 }
 
-.container {
+.container-fluid {
     display: flex;
     justify-content: space-between;
     align-items: center;    
@@ -59,7 +62,8 @@ li:first-child {
     color: #2d2d2d;
 }
 
-.nav__link:hover {
+.nav__link:hover,
+.nav__link.active {
     color: #d3992c;
 }
 
