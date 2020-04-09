@@ -3,8 +3,9 @@ import { ActivatedRoute, ParamMap } from '@angular/router';
 import { switchMap } from "rxjs/operators";
 
 import { ShopService } from 'src/app/shop.service';
-import { Category } from './category';
+import { Category } from '../category';
 import { Observable } from 'rxjs';
+import { Product } from 'src/app/products/product';
 
 @Component({
   selector: 'app-category-detail',
@@ -13,7 +14,8 @@ import { Observable } from 'rxjs';
 })
 export class CategoryDetailComponent implements OnInit {
  
-  category$: Observable<Category>;
+  products$: Observable<Product[]>;
+  categoryName: string;
 
   constructor(
     private shopService:ShopService,
@@ -21,10 +23,11 @@ export class CategoryDetailComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.category$ = this.route.paramMap.pipe(
+    this.products$ = this.route.paramMap.pipe(
       switchMap((params: ParamMap) =>
-        this.shopService.getProductsByCategoryId(+params.get('id')))
+        this.shopService.getProductsByCategoryIdFromAllProducts(+params.get('id')))
     );
   }
+  
 
 }

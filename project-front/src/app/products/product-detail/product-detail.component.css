@@ -1,5 +1,6 @@
 .product-detail {
     padding: 60px 0;
+    background-color: #f7f7f7;
 }
 .container {
     display: flex;
@@ -9,8 +10,10 @@
     width: 50%;
 }
 
-.product {
+.product-container {
+    padding: 0 15px;
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     text-align: center;
@@ -40,7 +43,7 @@
 
 .cart-button {
     width: 400px;
-    margin: 0 auto;
+    margin: 0 auto 40px;
 }
 
 .btn {
@@ -60,4 +63,11 @@
     font-weight: 700;
     position: relative;
     cursor: pointer;
+}
+.delete-btn {
+    background-color: rgb(255, 0, 0);
+}
+
+.update-btn {
+    background-color: #1a420f;
 }

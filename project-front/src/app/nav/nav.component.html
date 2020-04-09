@@ -1,7 +1,7 @@
 <div class="app-nav">
   <div class="container-fluid">
     <div class="logo-container">
-      <a href="#">
+      <a [routerLink]="['/categories']">
         <h2 class="logo__title">Shmot.kz</h2>
       </a>
     </div>
@@ -17,11 +17,18 @@
     </div>
     <div class="log-container">
       <ul>
-        <li>
+        <!-- <li>
           <a href="#" class="nav__link">Sign In</a>
+        </li> -->
+        <li *ngIf="!authService.isAuthorized()">
+          <a [routerLink]="['/login']" class="sign-up">Log In</a>
         </li>
-        <li>
-          <a href="#" class="sign-up">Sign Up</a>
+        <li class="nav__item" *ngIf="authService.isAuthorized()">
+          <a [routerLink]="['/cart']"
+          routerLinkActive="active" class="nav__link">Cart</a>
+        </li>
+        <li *ngIf="authService.isAuthorized()">
+          <a  class="nav_link">Hello {{authService.user.username}}</a>
         </li>
       </ul>
     </div>

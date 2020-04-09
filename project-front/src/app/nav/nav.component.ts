@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { Category } from '../categories/category-detail/category';
+
+
+import { Category } from '../categories/category';
 import { ShopService } from '../shop.service';
+import { AuthService } from "../auth.service";
 
 @Component({
   selector: 'app-nav',
@@ -11,7 +14,10 @@ export class NavComponent implements OnInit {
 
   categories:Category[];
 
-  constructor(private shopService:ShopService) { }
+  constructor(
+    private shopService:ShopService,
+    public authService:AuthService,
+    ) { }
 
   ngOnInit(): void {
     this.getCategories();
@@ -20,4 +26,5 @@ export class NavComponent implements OnInit {
     this.shopService.getCategories()
       .subscribe(categories => this.categories = categories);
   }
+
 }
