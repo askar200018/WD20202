@@ -29,4 +29,8 @@ export class ProductChangeComponent implements OnInit {
     this.location.back();
   }
 
+  cancel():void {
+    this.goBack();
+  }
+
 }
