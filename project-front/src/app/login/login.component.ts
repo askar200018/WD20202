@@ -20,8 +20,12 @@ export class LoginComponent implements OnInit {
 
   onSubmit(form: NgForm) {
     console.log(form.value)
-    this.authService.login();
-    this.goBack();
+    if (this.authService.login(form.value.username, form.value.password)){
+      alert('WELCOME ADMIN');
+      this.goBack();
+    }else {
+      alert('PLEASE TRY AGAIN');
+    }
   }
 
   goBack(): void {

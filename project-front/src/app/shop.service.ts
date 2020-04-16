@@ -14,8 +14,8 @@ import { CART_PRODUCTS } from "./cart/cart-products";
   providedIn: 'root'
 })
 export class ShopService {
-  products:Product[] = ALL_PRODUCTS;
-  categories:Category[] = CATEGORIES;
+  products:Product[];
+  categories:Category[];
   cartProducts:Product[] = CART_PRODUCTS;
   private categoriesUrl = 'api/categories';
   private productsUrl = 'api/products';
@@ -43,7 +43,7 @@ export class ShopService {
   }
   
   getProductsByCategoryId(categoryId: number): Observable<Category> {
-    const url =  `${this.categoriesUrl}/${categoryId}`
+    const url =  `${this.categoriesUrl}/${categoryId}` // api/categories/2
     return this.http.get<Category>(url).pipe(
       catchError(this.handleError<Category>(`getProductsByCategoryId id=${categoryId}`))
     );
