@@ -27,6 +27,6 @@ class VacancyTopAPIView(generics.ListAPIView):
     queryset = Vacancy.objects.all().order_by('-salary')[:5]
     serializer_class = VacancySerializer
 
-class CompanyWithVacancies(generics.ListAPIView):
+class CompanyWithVacancies(generics.RetrieveAPIView):
     queryset = Company.objects.all()
     serializer_class = CompanyWithVacanciesSerializer

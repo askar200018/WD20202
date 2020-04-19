@@ -1,5 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {CompanyService} from "./company.service";
+import { NgForm } from '@angular/forms';
+
 
 @Component({
   selector: 'app-root',
@@ -34,6 +36,19 @@ export class AppComponent implements OnInit {
         this.username = '';
         this.password = '';
       })
+  }
+
+  onSubmit(loginForm: NgForm) {
+    let {username, password} = loginForm.value;
+    this.companyService.login(username, password)
+      .subscribe(res => {
+
+        localStorage.setItem('token', res.token);
+
+        this.logged = true;
+        username = '';
+        password = '';
+    })
   }
 
   logout(){

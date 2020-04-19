@@ -1,5 +1,5 @@
 from django.urls import path
-# from api.views.views_w11 import *
+from api.views.views_w11 import *
 # from api.views.views_fbv import company_detail, company_list
 # from api.views.views_cbv import CompanyListAPIView, CompanyDetailAPIView
 # from api.views.views_generic_v1 import CompanyListAPIView, CompanyDetailAPIView
@@ -33,4 +33,7 @@ urlpatterns = [
     path('vacancies/', VacancyListAPIView.as_view()),
     path('vacancies/<int:pk>/', VacancyDetailAPIView.as_view()),
     # path('vacancies/top/<int:top_number>/', vacancies_top),
+
+
+    # path('companies/<int:company_id>/vacancies/', company_vacancies),
 ]

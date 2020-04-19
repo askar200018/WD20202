@@ -1,1 +1,8 @@
-<p>company-detail works!</p>
+<div class="comany-detail">
+    <div class="container">
+        <div *ngFor="let vacancy of vacancies">
+            <h3>{{vacancy.name}}</h3>
+            <p>{{vacancy.salary}}</p>
+        </div>
+    </div>
+</div>

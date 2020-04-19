@@ -8,8 +8,8 @@ from api.serializers import CompanyModelSerializer
 
 class CompanyListAPIView(APIView):
     def get(self, request):
-        company = Company.objects.all()
-        serializer = CompanyModelSerializer(company, many=True)
+        companies = Company.objects.all()
+        serializer = CompanyModelSerializer(companies, many=True)
 
         return Response(serializer.data)
 

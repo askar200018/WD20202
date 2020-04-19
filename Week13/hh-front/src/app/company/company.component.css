@@ -1,0 +1,15 @@
+.companies{
+    width: 1140px;
+    margin: 0 auto;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+.companies > div {
+    width: 33.333%;
+    margin-bottom: 30px;
+    text-align: center;
+}
+.wrapper-link, .wrapper-btn {
+    margin-bottom: 10px;
+}

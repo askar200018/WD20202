@@ -32,4 +32,4 @@ class CompanyWithVacanciesSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Company
-        fields = ('id', 'name', 'vacancies')
+        fields = ('id','name', 'vacancies')
