@@ -1,9 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { Location } from '@angular/common';
+import { switchMap } from "rxjs/operators";
+import { ActivatedRoute, ParamMap } from '@angular/router';
+import { Observable } from 'rxjs';
 
 import { ShopService } from 'src/app/shop.service';
 import { AuthService } from "src/app/auth.service";
-import { ActivatedRoute } from '@angular/router';
 import { Product } from '../product';
 
 @Component({
@@ -13,7 +15,7 @@ import { Product } from '../product';
 })
 export class ProductDetailComponent implements OnInit {
   update:Boolean = false;
-  product: Product;
+  product$: Observable<Product>;
   
   constructor(
     private shopService:ShopService,
@@ -24,12 +26,14 @@ export class ProductDetailComponent implements OnInit {
 
   ngOnInit(): void {
     this.getProductById();
+    // console.log(this.product)
   }
 
   getProductById(): void {
-    const id = +this.route.snapshot.paramMap.get('id');
-    this.shopService.getProductById(id)
-      .subscribe(product => this.product = product);
+    this.product$ = this.route.paramMap.pipe(
+      switchMap((params: ParamMap) =>
+        this.shopService.getProductById(+params.get('id')))
+    );
   }
   delete(product: Product):void {
     this.shopService.deleteProduct(product).subscribe();

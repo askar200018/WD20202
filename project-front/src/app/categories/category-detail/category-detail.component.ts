@@ -14,7 +14,7 @@ import { Product } from 'src/app/products/product';
 })
 export class CategoryDetailComponent implements OnInit {
  
-  products$: Observable<Product[]>;
+  category$: Observable<Category>;
   categoryName: string;
 
   constructor(
@@ -23,9 +23,9 @@ export class CategoryDetailComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.products$ = this.route.paramMap.pipe(
+    this.category$ = this.route.paramMap.pipe(
       switchMap((params: ParamMap) =>
-        this.shopService.getProductsByCategoryIdFromAllProducts(+params.get('id')))
+        this.shopService.getCategoryById(+params.get('id')))
     );
   }
   

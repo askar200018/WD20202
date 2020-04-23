@@ -17,8 +17,8 @@ export class ShopService {
   products:Product[];
   categories:Category[];
   cartProducts:Product[] = CART_PRODUCTS;
-  private categoriesUrl = 'api/categories';
-  private productsUrl = 'api/products';
+  private categoriesUrl = 'http://localhost:8000/api/categories';
+  private productsUrl = 'http://localhost:8000/api/products';
 
   httpOptions = {
     headers: new HttpHeaders({ 'Content-Type': 'application/json' })
@@ -41,6 +41,21 @@ export class ShopService {
         catchError(this.handleError<Category[]>('getCategories', []))
       );
   }
+
+  getCategoryById(categoryId: number): Observable<Category> {
+    const url =  `${this.categoriesUrl}/${categoryId}`
+    return this.http.get<Category>(url).pipe(
+      catchError(this.handleError<Category>(`getCategoryById id=${categoryId}`))
+    );
+  }
+
+  getProductById(productId: number): Observable<Product> {
+    const url = `${this.productsUrl}/${productId}`;
+    return this.http.get<Product>(url).pipe(
+      catchError(this.handleError<Product>(`getProductById id=${productId}`))
+    );
+  }
+  
   
   getProductsByCategoryId(categoryId: number): Observable<Category> {
     const url =  `${this.categoriesUrl}/${categoryId}` // api/categories/2
@@ -58,13 +73,6 @@ export class ShopService {
     return tempProducts;
   }
 
-  getProductById(productId: number): Observable<Product> {
-    const url = `${this.productsUrl}/${productId}`;
-    return this.http.get<Product>(url).pipe(
-      catchError(this.handleError<Product>(`getProductById id=${productId}`))
-    );
-  }
-
   deleteProduct (product: Product | number): Observable<Product> {
     const id = typeof product === 'number' ? product : product.id;
     const url = `${this.productsUrl}/${id}`;
@@ -74,7 +82,8 @@ export class ShopService {
     );
   }
   updateProduct (product: Product): Observable<Product> {
-    return this.http.put(this.productsUrl, product, this.httpOptions).pipe(
+    const url =  `${this.productsUrl}/${product.id}`
+    return this.http.put(url, product, this.httpOptions).pipe(
       catchError(this.handleError<any>('updateProduct'))
     );
   }
